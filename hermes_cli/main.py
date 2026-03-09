@@ -1337,7 +1337,7 @@ _PROVIDER_MODELS = {
         "kimi-k2-0905-preview",
     ],
     "nim": [
-        "moonshotai/kimi-k2.5",
+        "moonshotai/kimi-k2-5",
         "meta/llama-3.3-70b-instruct",
         "qwen/qwen3-235b-a22b",
     ],

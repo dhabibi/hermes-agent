@@ -58,9 +58,9 @@ class TestParseModelInput:
         assert model == "hermes-3"
 
     def test_nim_provider_alias_switch(self):
-        provider, model = parse_model_input("nvidia:moonshotai/kimi-k2.5", "openrouter")
+        provider, model = parse_model_input("nvidia:moonshotai/kimi-k2-5", "openrouter")
         assert provider == "nim"
-        assert model == "moonshotai/kimi-k2.5"
+        assert model == "moonshotai/kimi-k2-5"
 
     def test_empty_model_after_colon_keeps_current(self):
         provider, model = parse_model_input("openrouter:", "nous")
@@ -132,7 +132,7 @@ class TestProviderModelIds:
         assert "glm-5" in provider_model_ids("zai")
 
     def test_nim_returns_curated_models(self):
-        assert "moonshotai/kimi-k2.5" in provider_model_ids("nim")
+        assert "moonshotai/kimi-k2-5" in provider_model_ids("nim")
 
 
 # -- fetch_api_models --------------------------------------------------------

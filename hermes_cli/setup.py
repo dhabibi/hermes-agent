@@ -1052,7 +1052,7 @@ def setup_model_provider(config: dict):
             # else: keep current
         elif selected_provider == "nim":
             nim_models = [
-                "moonshotai/kimi-k2.5",
+                "moonshotai/kimi-k2-5",
                 "meta/llama-3.3-70b-instruct",
                 "qwen/qwen3-235b-a22b",
             ]

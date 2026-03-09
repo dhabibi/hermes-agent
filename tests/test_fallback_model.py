@@ -130,6 +130,21 @@ class TestTryActivateFallback:
             call_kwargs = mock_openai.call_args[1]
             assert "minimax.io" in call_kwargs["base_url"]
 
+    def test_activates_nim_fallback(self):
+        agent = _make_agent(
+            fallback_model={"provider": "nim", "model": "moonshotai/kimi-k2-5"},
+        )
+        with (
+            patch.dict("os.environ", {"NVIDIA_API_KEY": "sk-nim-key"}),
+            patch("run_agent.OpenAI") as mock_openai,
+        ):
+            assert agent._try_activate_fallback() is True
+            assert agent.model == "moonshotai/kimi-k2-5"
+            assert agent.provider == "nim"
+            call_kwargs = mock_openai.call_args[1]
+            assert call_kwargs["api_key"] == "sk-nim-key"
+            assert "integrate.api.nvidia.com" in call_kwargs["base_url"]
+
     def test_only_fires_once(self):
         agent = _make_agent(
             fallback_model={"provider": "openrouter", "model": "anthropic/claude-sonnet-4"},
@@ -321,6 +336,7 @@ class TestProviderCredentials:
         ("openrouter", "OPENROUTER_API_KEY", "openrouter"),
         ("zai", "ZAI_API_KEY", "z.ai"),
         ("kimi-coding", "KIMI_API_KEY", "moonshot.ai"),
+        ("nim", "NVIDIA_API_KEY", "integrate.api.nvidia.com"),
         ("minimax", "MINIMAX_API_KEY", "minimax.io"),
         ("minimax-cn", "MINIMAX_CN_API_KEY", "minimaxi.com"),
     ])

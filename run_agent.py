@@ -2180,6 +2180,7 @@ class AIAgent:
         "openrouter": (OPENROUTER_BASE_URL, ["OPENROUTER_API_KEY"]),
         "zai": ("https://api.z.ai/api/paas/v4", ["ZAI_API_KEY", "Z_AI_API_KEY"]),
         "kimi-coding": ("https://api.moonshot.ai/v1", ["KIMI_API_KEY"]),
+        "nim": ("https://integrate.api.nvidia.com/v1", ["NVIDIA_API_KEY"]),
         "minimax": ("https://api.minimax.io/v1", ["MINIMAX_API_KEY"]),
         "minimax-cn": ("https://api.minimaxi.com/v1", ["MINIMAX_CN_API_KEY"]),
     }
