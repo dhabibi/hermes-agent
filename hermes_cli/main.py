@@ -742,6 +742,7 @@ def cmd_model(args):
         "openai-codex": "OpenAI Codex",
         "zai": "Z.AI / GLM",
         "kimi-coding": "Kimi / Moonshot",
+        "nim": "NVIDIA NIM",
         "minimax": "MiniMax",
         "minimax-cn": "MiniMax (China)",
         "custom": "Custom endpoint",
@@ -760,6 +761,7 @@ def cmd_model(args):
         ("openai-codex", "OpenAI Codex"),
         ("zai", "Z.AI / GLM (Zhipu AI direct API)"),
         ("kimi-coding", "Kimi / Moonshot (Moonshot AI direct API)"),
+        ("nim", "NVIDIA NIM (NVIDIA-hosted direct API)"),
         ("minimax", "MiniMax (global direct API)"),
         ("minimax-cn", "MiniMax China (domestic direct API)"),
     ]
@@ -826,7 +828,7 @@ def cmd_model(args):
         _model_flow_named_custom(config, _custom_provider_map[selected_provider])
     elif selected_provider == "remove-custom":
         _remove_custom_provider(config)
-    elif selected_provider in ("zai", "kimi-coding", "minimax", "minimax-cn"):
+    elif selected_provider in ("zai", "kimi-coding", "nim", "minimax", "minimax-cn"):
         _model_flow_api_key_provider(config, selected_provider, current_model)
 
 
@@ -1333,6 +1335,11 @@ _PROVIDER_MODELS = {
         "kimi-k2-thinking",
         "kimi-k2-turbo-preview",
         "kimi-k2-0905-preview",
+    ],
+    "nim": [
+        "moonshotai/kimi-k2.5",
+        "meta/llama-3.3-70b-instruct",
+        "qwen/qwen3-235b-a22b",
     ],
     "minimax": [
         "MiniMax-M2.5",
@@ -1899,7 +1906,7 @@ For more help on a command:
     )
     chat_parser.add_argument(
         "--provider",
-        choices=["auto", "openrouter", "nous", "openai-codex", "zai", "kimi-coding", "minimax", "minimax-cn"],
+        choices=["auto", "openrouter", "nous", "openai-codex", "zai", "kimi-coding", "nim", "minimax", "minimax-cn"],
         default=None,
         help="Inference provider (default: auto)"
     )
