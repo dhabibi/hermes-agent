@@ -20,7 +20,7 @@ These are commands you run from your shell.
 | `hermes chat -c "my project"` | Resume a session by name (latest in lineage) |
 | `hermes chat --resume <id>` / `-r <id>` | Resume a specific session by ID or title |
 | `hermes chat --model <name>` | Use a specific model |
-| `hermes chat --provider <name>` | Force a provider (`nous`, `openrouter`, `zai`, `kimi-coding`, `minimax`, `minimax-cn`) |
+| `hermes chat --provider <name>` | Force a provider (`nous`, `openrouter`, `zai`, `kimi-coding`, `nim`, `minimax`, `minimax-cn`) |
 | `hermes chat --toolsets "web,terminal"` / `-t` | Use specific toolsets |
 | `hermes chat --verbose` | Enable verbose/debug output |
 | `hermes --worktree` / `-w` | Start in an isolated git worktree (for parallel agents) |

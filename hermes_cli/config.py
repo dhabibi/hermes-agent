@@ -854,6 +854,7 @@ _COMMENTED_SECTIONS = """
 #   nous         (OAuth — hermes login) — Nous Portal
 #   zai          (ZAI_API_KEY)         — Z.AI / GLM
 #   kimi-coding  (KIMI_API_KEY)        — Kimi / Moonshot
+#   nim          (NVIDIA_API_KEY)      — NVIDIA NIM
 #   minimax      (MINIMAX_API_KEY)     — MiniMax
 #   minimax-cn   (MINIMAX_CN_API_KEY)  — MiniMax (China)
 #

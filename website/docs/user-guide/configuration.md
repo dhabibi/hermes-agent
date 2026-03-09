@@ -66,6 +66,7 @@ You need at least one way to connect to an LLM. Use `hermes model` to switch pro
 | **OpenRouter** | `OPENROUTER_API_KEY` in `~/.hermes/.env` |
 | **z.ai / GLM** | `GLM_API_KEY` in `~/.hermes/.env` (provider: `zai`) |
 | **Kimi / Moonshot** | `KIMI_API_KEY` in `~/.hermes/.env` (provider: `kimi-coding`) |
+| **NVIDIA NIM** | `NVIDIA_API_KEY` in `~/.hermes/.env` (provider: `nim`) |
 | **MiniMax** | `MINIMAX_API_KEY` in `~/.hermes/.env` (provider: `minimax`) |
 | **MiniMax China** | `MINIMAX_CN_API_KEY` in `~/.hermes/.env` (provider: `minimax-cn`) |
 | **Custom Endpoint** | `OPENAI_BASE_URL` + `OPENAI_API_KEY` in `~/.hermes/.env` |
@@ -78,7 +79,7 @@ The OpenAI Codex provider authenticates via device code (open a URL, enter a cod
 Even when using Nous Portal, Codex, or a custom endpoint, some tools (vision, web summarization, MoA) use a separate "auxiliary" model — by default Gemini Flash via OpenRouter. An `OPENROUTER_API_KEY` enables these tools automatically. You can also configure which model and provider these tools use — see [Auxiliary Models](#auxiliary-models) below.
 :::
 
-### First-Class Chinese AI Providers
+### First-Class API-Key Providers
 
 These providers have built-in support with dedicated provider IDs. Set the API key and use `--provider` to select:
 
@@ -90,6 +91,10 @@ hermes chat --provider zai --model glm-4-plus
 # Kimi / Moonshot AI
 hermes chat --provider kimi-coding --model moonshot-v1-auto
 # Requires: KIMI_API_KEY in ~/.hermes/.env
+
+# NVIDIA NIM
+hermes chat --provider nim --model moonshotai/kimi-k2-5
+# Requires: NVIDIA_API_KEY in ~/.hermes/.env
 
 # MiniMax (global endpoint)
 hermes chat --provider minimax --model MiniMax-Text-01
@@ -103,11 +108,11 @@ hermes chat --provider minimax-cn --model MiniMax-Text-01
 Or set the provider permanently in `config.yaml`:
 ```yaml
 model:
-  provider: "zai"       # or: kimi-coding, minimax, minimax-cn
+  provider: "zai"       # or: kimi-coding, nim, minimax, minimax-cn
   default: "glm-4-plus"
 ```
 
-Base URLs can be overridden with `GLM_BASE_URL`, `KIMI_BASE_URL`, `MINIMAX_BASE_URL`, or `MINIMAX_CN_BASE_URL` environment variables.
+Base URLs can be overridden with `GLM_BASE_URL`, `KIMI_BASE_URL`, `NVIDIA_BASE_URL`, `MINIMAX_BASE_URL`, or `MINIMAX_CN_BASE_URL` environment variables.
 
 ## Custom & Self-Hosted LLM Providers
 
